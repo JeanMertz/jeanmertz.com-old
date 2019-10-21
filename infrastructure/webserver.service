@@ -1,0 +1,23 @@
+[Unit]
+Description=Nginx Web Server
+After=docker.service
+Requires=docker.service
+
+[Service]
+Restart=always
+TimeoutStartSec=0
+ExecStartPre=/usr/bin/docker pull nginx:1.17-alpine
+ExecStartPre=-/usr/bin/docker stop webserver
+ExecStartPre=-/usr/bin/docker rm webserver
+ExecStart=/usr/bin/docker run \
+    --rm \
+    --name=webserver \
+    --restart=no \
+    --net=host \
+    --volume=/opt/etc/nginx/nginx.conf:/etc/nginx/nginx.conf:ro \
+    --volume=/opt/etc/certs:/opt/etc/certs:ro \
+    --volume=/opt/www:/opt/www:ro \
+    nginx:1.17-alpine
+
+[Install]
+WantedBy=multi-user.target
