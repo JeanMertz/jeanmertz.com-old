@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html class="{% if section %}{% if section.relative_path == "_index.md" %}index{% else %}section{% endif %}{% endif %}">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="no-referrer" />
+
+    <link rel="stylesheet" href="/fonts.css" />
+    <link rel="stylesheet" href="/style.css" />
+
+    <title>
+      {% block htmltitle %}{{ config.title }}{% endblock htmltitle %}
+    </title>
+
+    {% if config.generate_rss %}
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="RSS"
+      href="{{ get_url(path='rss.xml') }}"
+    />
+    {% endif %}
+  </head>
+  <body>
+    {% block body %}
+    <header>
+      <div class="intro">
+        Hi, I’m Jean Mertz 👋
+      </div>
+
+      <div class="byline">
+        I’m a <strong>software engineer</strong> by trade, and a
+        <strong>life-long student</strong> by passion.
+      </div>
+
+      <div class="portrait">
+        <img src="/images/portrait.png" />
+      </div>
+
+      <div class="work-in-progress">
+        <p>
+          As of <em>October 2019</em>, this website is under active development.
+          The most important thing to know about me right now is that
+          <strong>I am actively searching for a new job opportunity</strong>.
+        </p>
+        <p>
+          Until the website contains more details about me, you can check out my
+          <a href="https://linkedin.com/in/jeanmertz43">LinkedIn</a>,
+          <a href="https://github.com/JeanMertz">GitHub</a>, and
+          <a href="https://twitter.com/jeanmertz">Twitter</a> profiles.
+        </p>
+        <p>
+          You can get in touch by
+          <a href="mailto:work@jeanmertz.com">emailing me</a>.
+        </p>
+      </div>
+    </header>
+    {% endblock body %}
+  </body>
+</html>

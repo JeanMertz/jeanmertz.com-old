@@ -1,0 +1,4 @@
+base_url = "https://jeanmertz.com"
+build_search_index = true
+compile_sass = true
+highlight_code = true

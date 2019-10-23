@@ -1,0 +1,20 @@
+@import "reset";
+@import "variables";
+@import "components/portrait";
+
+@font-face {
+  font-family: "Didact Gothic";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Didact Gothic Regular"), local("DidactGothic-Regular"), url(fonts/DidactGothic-Regular.otf) format("opentype");
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background: var(--color-bg0);
+  font-family: "Didact Gothic", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html.index { @import "index"; }
