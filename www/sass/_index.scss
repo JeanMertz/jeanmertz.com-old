@@ -29,7 +29,7 @@ header {
     margin: 60px 0;
   }
 
-  .work-in-progress {
+  .notice {
     width: 80%;
     font-size: 1rem;
     text-decoration-skip-ink: auto;
@@ -55,8 +55,30 @@ header {
       margin-top: 0;
     }
 
-    .work-in-progress {
-      width: 40%;
+    .notice {
+      max-width: 350px;
+    }
+  }
+
+  nav {
+    width: 250px;
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+
+    a {
+      color: var(--color-blue);
+      text-decoration: none;
+    }
+
+    ul {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    li {
+      list-style: none;
     }
   }
 }
