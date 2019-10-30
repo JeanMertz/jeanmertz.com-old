@@ -92,26 +92,49 @@
   --light-aqua: var(--gruvbox-faded-aqua);
   --light-orange: var(--gruvbox-faded-orange);
 
-  // global color scheme (defaults to dark)
-  --color-bg0: var(--dark-bg0);
-  --color-bg1: var(--dark-bg1);
-  --color-bg2: var(--dark-bg2);
-  --color-bg3: var(--dark-bg3);
-  --color-bg4: var(--dark-bg4);
-  --color-gray: var(--dark-gray);
-  --color-fg0: var(--dark-fg0);
-  --color-fg1: var(--dark-fg1);
-  --color-fg2: var(--dark-fg2);
-  --color-fg3: var(--dark-fg3);
-  --color-fg4: var(--dark-fg4);
-  --color-fg4-256: var(--dark-fg4-256);
-  --color-red: var(--dark-red);
-  --color-green: var(--dark-green);
-  --color-yellow: var(--dark-yellow);
-  --color-blue: var(--dark-blue);
-  --color-purple: var(--dark-purple);
-  --color-aqua: var(--dark-aqua);
-  --color-orange: var(--dark-orange);
+  // global color scheme (defaults to light)
+  --color-bg0: var(--light-bg0);
+  --color-bg1: var(--light-bg1);
+  --color-bg2: var(--light-bg2);
+  --color-bg3: var(--light-bg3);
+  --color-bg4: var(--light-bg4);
+  --color-gray: var(--light-gray);
+  --color-fg0: var(--light-fg0);
+  --color-fg1: var(--light-fg1);
+  --color-fg2: var(--light-fg2);
+  --color-fg3: var(--light-fg3);
+  --color-fg4: var(--light-fg4);
+  --color-fg4-256: var(--light-fg4-256);
+  --color-red: var(--light-red);
+  --color-green: var(--light-green);
+  --color-yellow: var(--light-yellow);
+  --color-blue: var(--light-blue);
+  --color-purple: var(--light-purple);
+  --color-aqua: var(--light-aqua);
+  --color-orange: var(--light-orange);
+
+  @media (prefers-color-scheme: dark) {
+    // global color scheme (used in "dark mode")
+    --color-bg0: var(--dark-bg0);
+    --color-bg1: var(--dark-bg1);
+    --color-bg2: var(--dark-bg2);
+    --color-bg3: var(--dark-bg3);
+    --color-bg4: var(--dark-bg4);
+    --color-gray: var(--dark-gray);
+    --color-fg0: var(--dark-fg0);
+    --color-fg1: var(--dark-fg1);
+    --color-fg2: var(--dark-fg2);
+    --color-fg3: var(--dark-fg3);
+    --color-fg4: var(--dark-fg4);
+    --color-fg4-256: var(--dark-fg4-256);
+    --color-red: var(--dark-red);
+    --color-green: var(--dark-green);
+    --color-yellow: var(--dark-yellow);
+    --color-blue: var(--dark-blue);
+    --color-purple: var(--dark-purple);
+    --color-aqua: var(--dark-aqua);
+    --color-orange: var(--dark-orange);
+  }
 
   // terminal color scheme
   --terminal-color-0: var(--color-bg0);
