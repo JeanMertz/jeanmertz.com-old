@@ -130,4 +130,13 @@
   --terminal-color-13: var(--color-purple);
   --terminal-color-14: var(--color-aqua);
   --terminal-color-15: var(--color-fg1);
+
+  // measurements
+  --header-height: 200px;
+  --col1-width: 240px;
+  --portrait-size: 250px;
+
+  @media screen and (min-width: 1200px) {
+    --col1-width: 360px;
+  }
 }

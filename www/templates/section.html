@@ -1,0 +1,73 @@
+{% extends "index.html" %} {% block body %}
+<header>
+  <div class="col1">
+    {% block topleft %}
+    <div class="portrait">
+      <img src="/images/portrait.png" />
+    </div>
+
+    <span>Jean Mertz</span>
+    {% endblock topleft %}
+  </div>
+  <div class="col2">
+    {% block header %}
+    <div class="title">
+      <h1>{{ section.title }}</h1>
+      <h2>{{ section.description }}</h2>
+    </div>
+    {% endblock topleft %}
+  </div>
+</header>
+<section>
+  <div class="col1">
+    {% block sidebar %} {% endblock sidebar %}
+  </div>
+  <div class="col2">
+    {% block content %}
+    <article>
+      {{ section.content | safe }}
+    </article>
+
+    <!--
+    <p>
+      I have over ten years of software
+    </p>
+
+    <p>Don't only talk about my upsides, but also downsites...?</p>
+    <h3>Personality Traits</h3>
+    <p>
+      Talk about my humor, hunger for knowledge, focus, but also urge to bite in
+      and not let go (good and bad)
+    </p>
+    <h3>Soft Skills</h3>
+    <p>
+      team player, verbal communication, talk about tendency to favor long
+      essays (bad), ...
+    </p>
+    <h3>Technical Skills</h3>
+    <p>languages I know, devops, hardware, etc etc...</p>
+    <h3>Pastime Activities</h3>
+    <p>reading, relaxing, movies, sometimes some RPG games, ...</p>
+    <h3>Current Employment</h3>
+    <p>more in-depth description of current professional activities.</p>
+    <h3>Historical Employments</h3>
+    <p>summaries of past jobs</p>
+    <div class="col21">
+      <div class="col1">2000 – 2010</div>
+      <div class="col2">Software Architect</div>
+    </div>
+    <div class="col21">
+      <div class="col1">2000 – 2010</div>
+      <div class="col2">CTO of Blendle</div>
+    </div>
+    <h3>Reading List</h3>
+    <p>summary of books I've read, probably loaded from a toml file.</p>
+    <h3>Educational Accomplishments</h3>
+    <p>education and some online courses I took.</p>
+    <h3>Degrees &amp; Certificates (prefer above name)</h3>
+    -->
+    {% endblock content %}
+  </div>
+</section>
+<footer></footer>
+{% endblock body %}
