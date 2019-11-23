@@ -31,6 +31,14 @@
     url('fonts/Merriweather-Light.woff') format('woff');
 }
 
+@font-face {
+  font-family: 'Profiles';
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+  src: url('fonts/profiles.woff') format('woff');
+}
+
 body {
   display: flex;
   min-height: 100vh;

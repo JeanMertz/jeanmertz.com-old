@@ -9,6 +9,7 @@ header {
   justify-content: center;
   color: var(--color-fg0);
   font-size: 1.6rem;
+  margin: 40px 0;
 
   .intro {
     margin: 40px 0;
@@ -30,19 +31,13 @@ header {
   }
 
   .notice {
-    width: 80%;
     font-size: 1rem;
     text-decoration-skip-ink: auto;
+    text-align: center;
+    padding: 0 20px;
 
     strong {
-      color: var(--color-red);
-    }
-
-    em {
-      font-style: normal;
-      text-decoration: underline;
-      text-decoration-style: dotted;
-      text-decoration-skip-ink: none;
+      color: var(--color-purple);
     }
 
     a {
@@ -54,20 +49,19 @@ header {
     .intro {
       margin-top: 0;
     }
-
-    .notice {
-      max-width: 350px;
-    }
   }
 
   nav {
-    width: 250px;
-    font-size: 1.2rem;
-    margin-bottom: 40px;
+    width: 150px;
+    font-size: 1.3rem;
+    margin-bottom: 60px;
 
     a {
       color: var(--color-blue);
-      text-decoration: none;
+
+      &:hover {
+        color: var(--color-green);
+      }
     }
 
     ul {
@@ -79,6 +73,31 @@ header {
 
     li {
       list-style: none;
+
+      &.soon { color: var(--color-gray); }
+
+      &.sep {
+        border-right: 1px var(--color-fg4) solid;
+        height: 14px;
+      }
+    }
+  }
+
+  div.profiles {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 40px;
+    font-family: 'Profiles', sans-serif;
+
+    a {
+      margin: 0 12px;
+      text-decoration: none;
+      color: var(--color-fg4);
+      font-size: 0.7em;
+
+      &:hover { color: var(--color-fg0); }
     }
   }
 }
