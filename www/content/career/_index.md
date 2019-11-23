@@ -88,50 +88,63 @@ Go ahead and search the list for whatever term is of interest to you. I don’t
 think it matters too much, as I have enough experience in most software fields
 to be able to pick up new technologies relatively quickly.
 
-The <sup>superscript</sup> numbers signal my current _comfort level_ in using
-that language or technology, while the <sub>subscript</sub> numbers signal my
-current _interest level_ in it. It’s a 5 point scale, and should be taken with
-a grain of salt as it’s hard to measure these things.
-
-The numbers _should not_ be compared cross-domain. An interest level of five for
-the Terraform software and a level of three for the TypeScript language does not
-mean I’m more interested in Terraform.
-
 ### Programming Languages
 
-Ruby<sup>5</sup><sub>4</sub>,
-Golang<sup>5</sup><sub>4</sub>,
-Rust<sup>4</sup><sub>5</sub>,
-HTML/CSS<sup>4</sup><sub>2</sub>,
-Groovy<sup>4</sup><sub>2</sub>,
-JavaScript<sup>3</sup><sub>2</sub>,
-PHP<sup>3</sup><sub>1</sub>,
-Swift<sup>2</sup><sub>4</sub>,
-C<sup>2</sup><sub>3</sub>,
-TypeScript<sup>2</sup><sub>3</sub>,
-LUA<sup>2</sup><sub>3</sub>,
-Elixir<sup>1</sup><sub>4</sub>,
-Java<sup>1</sup><sub>0</sub>.
+C,
+Elixir,
+<strong>Golang</strong>,
+Groovy,
+HTML/CSS,
+JavaScript,
+LUA,
+PHP,
+Python,
+<strong>Ruby</strong>,
+<strong>Rust</strong>,
+SQL,
+Shell scripting,
+Swift,
+TypeScript.
 
-### Software
+### Data Stores
 
-Kubernetes<sup>4</sup><sub>4</sub>,
-Terraform<sup>4</sup><sub>4</sub>,
-Git<sup>4</sup><sub>4</sub>,
-Kafka<sup>4</sup><sub>3</sub>,
-Unix<sup>4</sup><sub>3</sub>,
-Docker<sup>4</sup><sub>3</sub>,
-Rails<sup>4</sup><sub>3</sub>,
-Sidekiq<sup>4</sup><sub>3</sub>,
-Google Cloud<sup>4</sup><sub>3</sub>,
-Prometheus<sup>3</sup><sub>4</sub>,
-Ansible<sup>3</sup><sub>3</sub>,
-Amazon Web Services<sup>3</sup><sub>2</sub>,
-Chef<sup>3</sup><sub>1</sub>,
-macOS<sup>3</sup><sub>3</sub>,
-Windows<sup>3</sup><sub>1</sub>,
-iOS<sup>2</sup><sub>3</sub>,
-Android<sup>1</sup><sub>1</sub>.
+BigQuery,
+BigTable,
+ElasticSearch,
+MongoDB,
+MySQL,
+Redis,
+Postgres.
+
+### Operations Tools
+
+Ansible,
+Chef,
+Docker,
+Istio,
+Jenkins,
+Kubernetes,
+Nomad,
+Packer,
+Prometheus,
+Terraform,
+Vault.
+
+### Other
+
+Amazon Web Services,
+Git,
+GitHub,
+Google Cloud Platform,
+Kafka,
+Pub/Sub,
+Rails,
+Sidekiq,
+Travis,
+Unix,
+Windows,
+iOS,
+macOS.
 
 ### Soft Skills
 
