@@ -12,7 +12,11 @@
     <link rel="stylesheet" href="/style.css" />
 
     <title>
-      {% block htmltitle %}{{ config.title }}{% endblock htmltitle %}
+      {% if section.title %}
+      Jean Mertz – {{ section.title | title }}
+      {% else %}
+      Jean Mertz
+      {% endif %}
     </title>
 
     {% if config.generate_rss %}
