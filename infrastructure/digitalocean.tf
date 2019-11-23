@@ -46,6 +46,21 @@ resource "digitalocean_record" "wildcard" {
   value  = "${digitalocean_floating_ip.jeanmertz.ip_address}"
 }
 
+# see: https://www.fastmail.com/help/receive/domains-advanced.html#dnslist
+resource "digitalocean_record" "mail-1" {
+  domain = "${digitalocean_domain.jeanmertz.name}"
+  type   = "A"
+  name   = "mail"
+  value  = "66.111.4.147"
+}
+
+resource "digitalocean_record" "mail-2" {
+  domain = "${digitalocean_domain.jeanmertz.name}"
+  type   = "A"
+  name   = "mail"
+  value  = "66.111.4.148"
+}
+
 resource "digitalocean_record" "caa" {
   domain = "${digitalocean_domain.jeanmertz.name}"
   type   = "CAA"
@@ -63,10 +78,50 @@ resource "digitalocean_record" "email-mx-1" {
   priority = 10
 }
 
+resource "digitalocean_record" "email-mx-1-wildcard" {
+  domain   = "${digitalocean_domain.jeanmertz.name}"
+  type     = "MX"
+  name     = "*"
+  value    = "in1-smtp.messagingengine.com."
+  priority = 10
+}
+
+# This is needed because we also set an "A" record on the `mail` subdomain,
+# which would mask our wildcard MX record, preventing emails to be delivered to
+# ...@mail.jeanmertz.com (not that this is in use right now, but let's prevent
+# any surprises).
+resource "digitalocean_record" "email-mx-1-mail" {
+  domain   = "${digitalocean_domain.jeanmertz.name}"
+  type     = "MX"
+  name     = "mail"
+  value    = "in1-smtp.messagingengine.com."
+  priority = 10
+}
+
 resource "digitalocean_record" "email-mx-2" {
   domain   = "${digitalocean_domain.jeanmertz.name}"
   type     = "MX"
   name     = "@"
+  value    = "in2-smtp.messagingengine.com."
+  priority = 20
+}
+
+resource "digitalocean_record" "email-mx-2-wildcard" {
+  domain   = "${digitalocean_domain.jeanmertz.name}"
+  type     = "MX"
+  name     = "*"
+  value    = "in2-smtp.messagingengine.com."
+  priority = 20
+}
+
+# This is needed because we also set an "A" record on the `mail` subdomain,
+# which would mask our wildcard MX record, preventing emails to be delivered to
+# ...@mail.jeanmertz.com (not that this is in use right now, but let's prevent
+# any surprises).
+resource "digitalocean_record" "email-mx-2-mail" {
+  domain   = "${digitalocean_domain.jeanmertz.name}"
+  type     = "MX"
+  name     = "mail"
   value    = "in2-smtp.messagingengine.com."
   priority = 20
 }
@@ -97,6 +152,56 @@ resource "digitalocean_record" "email-dkim-3" {
   type   = "CNAME"
   name   = "fm3._domainkey"
   value  = "fm3.jeanmertz.com.dkim.fmhosted.com."
+}
+
+resource "digitalocean_record" "email-discovery-submission" {
+  domain   = "${digitalocean_domain.jeanmertz.name}"
+  type     = "SRV"
+  name     = "_submission._tcp.${digitalocean_domain.jeanmertz.name}"
+  value    = "smtp.fastmail.com."
+  priority = 0
+  weight   = 0
+  port     = 587
+}
+
+resource "digitalocean_record" "email-discovery-imaps" {
+  domain   = "${digitalocean_domain.jeanmertz.name}"
+  type     = "SRV"
+  name     = "_imaps._tcp"
+  value    = "imap.fastmail.com."
+  priority = 0
+  weight   = 0
+  port     = 993
+}
+
+resource "digitalocean_record" "email-discovery-pop3s" {
+  domain   = "${digitalocean_domain.jeanmertz.name}"
+  type     = "SRV"
+  name     = "_pop3s._tcp"
+  value    = "pop.fastmail.com."
+  priority = 0
+  weight   = 0
+  port     = 995
+}
+
+resource "digitalocean_record" "email-discovery-carddavs" {
+  domain   = "${digitalocean_domain.jeanmertz.name}"
+  type     = "SRV"
+  name     = "_carddavs._tcp"
+  value    = "carddav.fastmail.com."
+  priority = 0
+  weight   = 0
+  port     = 443
+}
+
+resource "digitalocean_record" "email-discovery-caldavs" {
+  domain   = "${digitalocean_domain.jeanmertz.name}"
+  type     = "SRV"
+  name     = "_caldavs._tcp"
+  value    = "caldav.fastmail.com."
+  priority = 0
+  weight   = 0
+  port     = 443
 }
 
 resource "digitalocean_firewall" "jeanmertz" {
