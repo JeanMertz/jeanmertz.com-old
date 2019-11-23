@@ -7,13 +7,15 @@ data "ignition_config" "jeanmertz" {
     "${data.ignition_directory.www.id}",
   ]
 
-  files = [
-    "${data.ignition_file.profile_variables.id}",
-    "${data.ignition_file.jeanmertz_cert_key.id}",
-    "${data.ignition_file.jeanmertz_cert_crt.id}",
-    "${data.ignition_file.nginx_conf.id}",
-    "${data.ignition_file.sshd_config.id}",
-  ]
+  files = concat(
+    [for k in data.ignition_file.cert_keys : k.id],
+    [for c in data.ignition_file.cert_crts : c.id],
+    [
+      data.ignition_file.profile_variables.id,
+      data.ignition_file.nginx_conf.id,
+      data.ignition_file.sshd_config.id
+    ],
+  )
 
   systemd = [
     "${data.ignition_systemd_unit.container_webserver.id}",
@@ -41,23 +43,27 @@ data "ignition_file" "profile_variables" {
   }
 }
 
-data "ignition_file" "jeanmertz_cert_key" {
+data "ignition_file" "cert_keys" {
+  for_each = var.domains
+
   filesystem = "root"
-  path       = "/opt/etc/certs/jeanmertz.com.key"
+  path       = "/opt/etc/certs/${each.key}.key"
   mode       = 384 # 600
 
   content {
-    content = "${var.cert_private_key}"
+    content = tls_private_key.domain[each.key].private_key_pem
   }
 }
 
-data "ignition_file" "jeanmertz_cert_crt" {
+data "ignition_file" "cert_crts" {
+  for_each = var.domains
+
   filesystem = "root"
-  path       = "/opt/etc/certs/jeanmertz.com.crt"
+  path       = "/opt/etc/certs/${each.key}.crt"
   mode       = 384 # 600
 
   content {
-    content = "${acme_certificate.jeanmertz.certificate_pem}"
+    content = acme_certificate.domain[each.key].certificate_pem
   }
 }
 

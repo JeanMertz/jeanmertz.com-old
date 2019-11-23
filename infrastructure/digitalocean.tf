@@ -1,7 +1,3 @@
-locals {
-  domains = ["jeanmertz.com", "ethical.engineer"]
-}
-
 provider "digitalocean" {
   token   = var.digitalocean_token
   version = "~> 1.9"
@@ -32,13 +28,13 @@ resource "digitalocean_ssh_key" "jeanmertz" {
 }
 
 resource "digitalocean_domain" "domain" {
-  for_each = toset(local.domains)
+  for_each = var.domains
 
   name = each.key
 }
 
 resource "digitalocean_record" "root" {
-  for_each = toset(local.domains)
+  for_each = var.domains
 
   domain = digitalocean_domain.domain[each.key].name
   type   = "A"
@@ -47,7 +43,7 @@ resource "digitalocean_record" "root" {
 }
 
 resource "digitalocean_record" "wildcard" {
-  for_each = toset(local.domains)
+  for_each = var.domains
 
   domain = digitalocean_domain.domain[each.key].name
   type   = "A"
@@ -57,7 +53,7 @@ resource "digitalocean_record" "wildcard" {
 
 # see: https://www.fastmail.com/help/receive/domains-advanced.html#dnslist
 resource "digitalocean_record" "mail-1" {
-  for_each = toset(local.domains)
+  for_each = var.domains
 
   domain = digitalocean_domain.domain[each.key].name
   type   = "A"
@@ -66,7 +62,7 @@ resource "digitalocean_record" "mail-1" {
 }
 
 resource "digitalocean_record" "mail-2" {
-  for_each = toset(local.domains)
+  for_each = var.domains
 
   domain = digitalocean_domain.domain[each.key].name
   type   = "A"
@@ -75,7 +71,7 @@ resource "digitalocean_record" "mail-2" {
 }
 
 resource "digitalocean_record" "caa" {
-  for_each = toset(local.domains)
+  for_each = var.domains
 
   domain = digitalocean_domain.domain[each.key].name
   type   = "CAA"
@@ -86,7 +82,7 @@ resource "digitalocean_record" "caa" {
 }
 
 resource "digitalocean_record" "email-mx-1" {
-  for_each = toset(local.domains)
+  for_each = var.domains
 
   domain   = digitalocean_domain.domain[each.key].name
   type     = "MX"
@@ -96,7 +92,7 @@ resource "digitalocean_record" "email-mx-1" {
 }
 
 resource "digitalocean_record" "email-mx-1-wildcard" {
-  for_each = toset(local.domains)
+  for_each = var.domains
 
   domain   = digitalocean_domain.domain[each.key].name
   type     = "MX"
@@ -110,7 +106,7 @@ resource "digitalocean_record" "email-mx-1-wildcard" {
 # ...@mail.jeanmertz.com (not that this is in use right now, but let's prevent
 # any surprises).
 resource "digitalocean_record" "email-mx-1-mail" {
-  for_each = toset(local.domains)
+  for_each = var.domains
 
   domain   = digitalocean_domain.domain[each.key].name
   type     = "MX"
@@ -120,7 +116,7 @@ resource "digitalocean_record" "email-mx-1-mail" {
 }
 
 resource "digitalocean_record" "email-mx-2" {
-  for_each = toset(local.domains)
+  for_each = var.domains
 
   domain   = digitalocean_domain.domain[each.key].name
   type     = "MX"
@@ -130,7 +126,7 @@ resource "digitalocean_record" "email-mx-2" {
 }
 
 resource "digitalocean_record" "email-mx-2-wildcard" {
-  for_each = toset(local.domains)
+  for_each = var.domains
 
   domain   = digitalocean_domain.domain[each.key].name
   type     = "MX"
@@ -144,7 +140,7 @@ resource "digitalocean_record" "email-mx-2-wildcard" {
 # ...@mail.jeanmertz.com (not that this is in use right now, but let's prevent
 # any surprises).
 resource "digitalocean_record" "email-mx-2-mail" {
-  for_each = toset(local.domains)
+  for_each = var.domains
 
   domain   = digitalocean_domain.domain[each.key].name
   type     = "MX"
@@ -154,7 +150,7 @@ resource "digitalocean_record" "email-mx-2-mail" {
 }
 
 resource "digitalocean_record" "email-spf" {
-  for_each = toset(local.domains)
+  for_each = var.domains
 
   domain = digitalocean_domain.domain[each.key].name
   type   = "TXT"
@@ -163,7 +159,7 @@ resource "digitalocean_record" "email-spf" {
 }
 
 resource "digitalocean_record" "email-dkim-1" {
-  for_each = toset(local.domains)
+  for_each = var.domains
 
   domain = digitalocean_domain.domain[each.key].name
   type   = "CNAME"
@@ -172,7 +168,7 @@ resource "digitalocean_record" "email-dkim-1" {
 }
 
 resource "digitalocean_record" "email-dkim-2" {
-  for_each = toset(local.domains)
+  for_each = var.domains
 
   domain = digitalocean_domain.domain[each.key].name
   type   = "CNAME"
@@ -181,7 +177,7 @@ resource "digitalocean_record" "email-dkim-2" {
 }
 
 resource "digitalocean_record" "email-dkim-3" {
-  for_each = toset(local.domains)
+  for_each = var.domains
 
   domain = digitalocean_domain.domain[each.key].name
   type   = "CNAME"
@@ -190,7 +186,7 @@ resource "digitalocean_record" "email-dkim-3" {
 }
 
 resource "digitalocean_record" "email-discovery-submission" {
-  for_each = toset(local.domains)
+  for_each = var.domains
 
   domain   = digitalocean_domain.domain[each.key].name
   type     = "SRV"
@@ -202,7 +198,7 @@ resource "digitalocean_record" "email-discovery-submission" {
 }
 
 resource "digitalocean_record" "email-discovery-imaps" {
-  for_each = toset(local.domains)
+  for_each = var.domains
 
   domain   = digitalocean_domain.domain[each.key].name
   type     = "SRV"
@@ -214,7 +210,7 @@ resource "digitalocean_record" "email-discovery-imaps" {
 }
 
 resource "digitalocean_record" "email-discovery-pop3s" {
-  for_each = toset(local.domains)
+  for_each = var.domains
 
   domain   = digitalocean_domain.domain[each.key].name
   type     = "SRV"
@@ -226,7 +222,7 @@ resource "digitalocean_record" "email-discovery-pop3s" {
 }
 
 resource "digitalocean_record" "email-discovery-carddavs" {
-  for_each = toset(local.domains)
+  for_each = var.domains
 
   domain   = digitalocean_domain.domain[each.key].name
   type     = "SRV"
@@ -238,7 +234,7 @@ resource "digitalocean_record" "email-discovery-carddavs" {
 }
 
 resource "digitalocean_record" "email-discovery-caldavs" {
-  for_each = toset(local.domains)
+  for_each = var.domains
 
   domain   = digitalocean_domain.domain[each.key].name
   type     = "SRV"

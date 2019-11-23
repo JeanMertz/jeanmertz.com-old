@@ -3,19 +3,14 @@ variable "acme_private_key" {
   description = "Private key used to authenticate with LetsEncrypt."
 }
 
-variable "acme_private_jwk" {
-  type        = string
-  description = "The LetsEncrypt private key in JWK format."
-}
-
-variable "cert_private_key" {
-  type        = string
-  description = "Private key used to create or update the LetsEncrypt TLS certificates."
-}
-
 variable "digitalocean_token" {
   type        = string
   description = "Token used to query the DigitalOcean API."
+}
+
+variable "domains" {
+  type        = map(object({ organisation = string, email_address = string }))
+  description = "A map of domain keys with TLS certificate properties."
 }
 
 variable "email_address" {
