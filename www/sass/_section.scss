@@ -17,6 +17,15 @@ header {
     .portrait {
       margin-bottom: 10px;
     }
+
+    span > a {
+      color: var(--color-fg0);
+      text-decoration: none;
+
+      &::before {
+        background-color: var(--color-fg0);
+      }
+    }
   }
 
   div.col2 {
@@ -36,7 +45,7 @@ section {
 }
 
 div.title {
-  color: var(--color-orange);
+  color: var(--color-green);
   margin: 20px 0 0 20px;
 
   h1 {
@@ -46,7 +55,6 @@ div.title {
     font-weight: 200;
     line-height: 1em;
     margin-bottom: 16px;
-    border-bottom: 3px solid var(--color-orange);
     width: auto;
   }
 
