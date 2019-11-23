@@ -1,5 +1,5 @@
 +++
-title = "curriculum vitae"
+title = "Curriculum Vitae"
 description = """
 I am a senior software engineer focused on the combination of high-level
 abstract APIs and low-level performance-driven systems. I am an avid learner and
