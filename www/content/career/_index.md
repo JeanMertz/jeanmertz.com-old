@@ -18,12 +18,12 @@ hesitate to say hello][email]!
 <br>
 
 1. [About Me](#about-me) — My personal experiences and lessons learned.
-   * [Skills and Technologies](#skills-and-technologies)
-   * [Past and Present Roles](#past-and-present-roles)
-   * [Personality Traits](#personality-traits)
+   - [Skills and Technologies](#skills-and-technologies)
+   - [Past and Present Roles](#past-and-present-roles)
+   - [Personality Traits](#personality-traits)
 2. [Employment History](#employment-history) — Not just who, but _what_ and _why_.
-   * [Current Employer](#current-employer-blendle): Blendle
-   * [Earlier Work](#earlier-work)
+   - [Current Employer](#current-employer-blendle): Blendle
+   - [Earlier Work](#earlier-work)
 3. [Personal Projects](#personal-projects) — That which I build for education and fun.
 
 <br>
@@ -238,40 +238,39 @@ lives up to that statement on a day to day basis matters even more.
 _Some more serious than others, here’s a short-list of what I find interesting
 or questionable about myself_
 
-* I can get watery eyes when I see a touching moment
-* I have a terrible memory, and need to write everything down
-* I enjoy being around cats, but also love dogs and other animals
-* I aspire to one day [write an educational open-source game][] about space
+- I can get watery eyes when I see a touching moment
+- I have a terrible memory, and need to write everything down
+- I enjoy being around cats, but also love dogs and other animals
+- I aspire to one day [write an educational open-source game][] about space
   exploration
-* I am afraid of forgetting people’s names
-* I get fuzzy feelings when I watch rockets launch to space
-* I exercise too little, and continuously watch my calorie intake to stay
+- I am afraid of forgetting people’s names
+- I get fuzzy feelings when I watch rockets launch to space
+- I exercise too little, and continuously watch my calorie intake to stay
   healthy
-* I enjoy video games, but hardly ever play because _”I have more
+- I enjoy video games, but hardly ever play because _”I have more
   important things to do”_
-* I have unfortunately grown to dislike social media and stay off of it as much
+- I have unfortunately grown to dislike social media and stay off of it as much
   as possible.
-* I have a strong feeling of OCD when it comes to the cleanliness of my office,
+- I have a strong feeling of OCD when it comes to the cleanliness of my office,
   desktop environment, etc.
-* I prefer the countryside over city life
-* I have a slightly addictive personality and avoid anything that I consider to
+- I prefer the countryside over city life
+- I have a slightly addictive personality and avoid anything that I consider to
   be harmful and addictive
-* I am worried about [what little privacy][] we have left in our civilization
-* I don’t drink coffee or tea, and almost exclusively drink tap water
-* I get easily distracted in open-office spaces and work best in isolation
-* I have long had a feeling of impostor syndrome, but that has faded over time
-* I struggle with being brief and to-the-point _(it’s okay to laugh now)_
-* I strongly dislike advertisements and instead pay for software, content and
+- I am worried about [what little privacy][] we have left in our civilization
+- I don’t drink coffee or tea, and almost exclusively drink tap water
+- I get easily distracted in open-office spaces and work best in isolation
+- I have long had a feeling of impostor syndrome, but that has faded over time
+- I struggle with being brief and to-the-point _(it’s okay to laugh now)_
+- I strongly dislike advertisements and instead pay for software, content and
   services whenever possible.
-* I have a light case of ”[benign essential tremor][]”, it does not impact my life
+- I have a light case of ”[benign essential tremor][]”, it does not impact my life
   in a significant way, other than I will never beat you at a game of [wire
   loop][].
-* I like to [read educational books][] (and writing down what I learn)
+- I like to [read educational books][] (and writing down what I learn)
 
 [write an educational open-source game]: https://rustic.games
 [what little privacy]: https://www.eff.org/issues/privacy
-[benign essential tremor]:
-https://www.mayoclinic.org/diseases-conditions/essential-tremor/symptoms-causes/syc-20350534
+[benign essential tremor]: https://www.mayoclinic.org/diseases-conditions/essential-tremor/symptoms-causes/syc-20350534
 [wire loop]: https://en.wikipedia.org/wiki/Wire_loop_game
 [read educational books]: https://www.goodreads.com/review/list/10454410
 
@@ -293,28 +292,28 @@ of engineers that started the company, working on rapid iterations of our
 product, building out the software and infrastructure stack required to support
 our exponential growth. In this role, I:
 
-* helped the adoption of software methodologies such as
+- helped the adoption of software methodologies such as
   **agile software development**, **test-driven development** and **pair
   programming**,
 
-* led a greenfield ”[Blendle Button][]” project written in **Ruby** and
+- led a greenfield ”[Blendle Button][]” project written in **Ruby** and
   **React**,
 
-* [led the transition][] to a cloud-native **Kubernetes-based infrastructure**
+- [led the transition][] to a cloud-native **Kubernetes-based infrastructure**
   stack,
 
-* focussed on optimising our communication and **[automating][]** that which could,
+- focussed on optimising our communication and **[automating][]** that which could,
 
-* took on the role of **scrum lead** in several projects,
+- took on the role of **scrum lead** in several projects,
 
-* built an [in-house CI/CD pipeline][] on top of **Jenkins** and **Kubernetes**,
+- built an [in-house CI/CD pipeline][] on top of **Jenkins** and **Kubernetes**,
 
-* collaborated on a **high-performance** [Go-based even-driven email delivery system][],
+- collaborated on a **high-performance** [Go-based even-driven email delivery system][],
 
-* built and integrated the ”[Blendle Premium][]” subscription service with
+- built and integrated the ”[Blendle Premium][]” subscription service with
   **payment service providers**,
 
-* built a high-performance Go-based **analytics pipeline** [on top of Kafka][].
+- built a high-performance Go-based **analytics pipeline** [on top of Kafka][].
 
 [blendle]: https://www.businessinsider.com/the-new-york-times-wall-street-journal-the-washington-post-sign-up-to-blendle-2015-3
 [blendle button]: https://www.cjr.org/analysis/blendle_signups_aggregator_micropayments.php
@@ -327,16 +326,16 @@ our exponential growth. In this role, I:
 
 As the **Chief Technical Officer** (February 2016 – January 2019), I:
 
-* was responsible for the **engineering team** and the software stack,
-* collaborated in our [hiring efforts],
-* helped our engineers grow by coaching them and helping them in their
+- was responsible for the **engineering team** and the software stack,
+- collaborated in our [hiring efforts],
+- helped our engineers grow by coaching them and helping them in their
   **personal development plans**,
-* helped foster a **culture of software engineering and architecture**,
-* set out the **technology roadmap** in collaboration with the product roadmap,
-* kept in [close contact with our partners],
-* worked closely with our product, marketing and operations divisions,
-* introduced the Spotify model of ”guilds” and led weekly check-in meetings,
-* collaborated with Blendle's [privacy & security officer][] on relevant topics.
+- helped foster a **culture of software engineering and architecture**,
+- set out the **technology roadmap** in collaboration with the product roadmap,
+- kept in [close contact with our partners],
+- worked closely with our product, marketing and operations divisions,
+- introduced the Spotify model of ”guilds” and led weekly check-in meetings,
+- collaborated with Blendle's [privacy & security officer][] on relevant topics.
 
 [hiring efforts]: http://blog.honeypot.io/talking-with-blendle/
 [close contact with our partners]: https://twitter.com/AWSonAir/status/735018625019617280
@@ -344,13 +343,13 @@ As the **Chief Technical Officer** (February 2016 – January 2019), I:
 
 As a **Lead Software Engineer** (January 2019 – present), I:
 
-* conducted numerous in-depth multi-hour interviews with candidates to **find the
+- conducted numerous in-depth multi-hour interviews with candidates to **find the
   right person to replace me** as the [CTO of Blendle][],
-* **re-found my passion** and refocussed my efforts on being actively involved
+- **re-found my passion** and refocussed my efforts on being actively involved
   in software engineering and architecture,
-* stayed involved in non-technical duties such as the hiring process,
-* collaborated with the product teams on **software architecture decisions**,
-* built an [automation system][] in **Rust** and **WebAssembly** for
+- stayed involved in non-technical duties such as the hiring process,
+- collaborated with the product teams on **software architecture decisions**,
+- built an [automation system][] in **Rust** and **WebAssembly** for
   non-engineers.
 
 [cto of blendle]: https://www.linkedin.com/in/joshuahoffman1/
