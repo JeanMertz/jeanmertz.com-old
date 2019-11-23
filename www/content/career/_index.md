@@ -36,12 +36,12 @@ hesitate to say hello][email]!
 _I am a senior software engineer focused on the combination of high-level
 abstract APIs and low-level performance-driven systems._
 
-As a **full-stack engineer** I have worked extensively with backend systems,
-while also maintaining clients to interact with those systems. I enjoy working
-both with high-level languages to abstract away business rules behind
-easy-to-use APIs while also being familiar with lower-level concepts such as
-memory management, CPU registers, cache lines, network packets and file
-descriptors when working in resource-constrained environments.
+As a **backend engineer** I have worked extensively with backend systems, while
+also maintaining clients to interact with those systems. I enjoy working with
+high-level languages to abstract away business rules behind easy-to-use APIs
+and am also getting more interested in lower-level concepts such as memory
+management, CPU registers, cache lines, network packets and file descriptors to
+develop for resource-constrained environments.
 
 I get **excited by any opportunity to optimize processes** within an
 organisation either by automating that which can be automated, by applying UX
