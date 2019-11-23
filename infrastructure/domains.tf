@@ -9,7 +9,7 @@ provider "tls" {
 
 resource "tls_cert_request" "jeanmertz" {
   key_algorithm   = "ECDSA"
-  private_key_pem = "${var.cert_private_key}"
+  private_key_pem = var.cert_private_key
   dns_names       = ["jeanmertz.com", "*.jeanmertz.com"]
 
   subject {
@@ -20,19 +20,19 @@ resource "tls_cert_request" "jeanmertz" {
 }
 
 resource "acme_registration" "jeanmertz" {
-  account_key_pem = "${var.acme_private_key}"
-  email_address   = "${var.email_address}"
+  account_key_pem = var.acme_private_key
+  email_address   = var.email_address
 }
 
 resource "acme_certificate" "jeanmertz" {
-  account_key_pem         = "${acme_registration.jeanmertz.account_key_pem}"
-  certificate_request_pem = "${tls_cert_request.jeanmertz.cert_request_pem}"
+  account_key_pem         = acme_registration.jeanmertz.account_key_pem
+  certificate_request_pem = tls_cert_request.jeanmertz.cert_request_pem
 
   dns_challenge {
     provider = "digitalocean"
 
     config = {
-      DO_AUTH_TOKEN = "${var.digitalocean_token}"
+      DO_AUTH_TOKEN = var.digitalocean_token
     }
   }
 }

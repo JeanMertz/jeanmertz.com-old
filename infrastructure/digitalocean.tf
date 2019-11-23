@@ -3,7 +3,7 @@ locals {
 }
 
 provider "digitalocean" {
-  token   = "${var.digitalocean_token}"
+  token   = var.digitalocean_token
   version = "~> 1.9"
 }
 
@@ -28,7 +28,7 @@ resource "digitalocean_tag" "jeanmertz" {
 
 resource "digitalocean_ssh_key" "jeanmertz" {
   name       = "Jean Mertz"
-  public_key = "${var.ssh_public_key}"
+  public_key = var.ssh_public_key
 }
 
 resource "digitalocean_domain" "domain" {
@@ -40,26 +40,26 @@ resource "digitalocean_domain" "domain" {
 resource "digitalocean_record" "root" {
   for_each = toset(local.domains)
 
-  domain = "${digitalocean_domain.domain[each.key].name}"
+  domain = digitalocean_domain.domain[each.key].name
   type   = "A"
   name   = "@"
-  value  = "${digitalocean_floating_ip.jeanmertz.ip_address}"
+  value  = digitalocean_floating_ip.jeanmertz.ip_address
 }
 
 resource "digitalocean_record" "wildcard" {
   for_each = toset(local.domains)
 
-  domain = "${digitalocean_domain.domain[each.key].name}"
+  domain = digitalocean_domain.domain[each.key].name
   type   = "A"
   name   = "*"
-  value  = "${digitalocean_floating_ip.jeanmertz.ip_address}"
+  value  = digitalocean_floating_ip.jeanmertz.ip_address
 }
 
 # see: https://www.fastmail.com/help/receive/domains-advanced.html#dnslist
 resource "digitalocean_record" "mail-1" {
   for_each = toset(local.domains)
 
-  domain = "${digitalocean_domain.domain[each.key].name}"
+  domain = digitalocean_domain.domain[each.key].name
   type   = "A"
   name   = "mail"
   value  = "66.111.4.147"
@@ -68,7 +68,7 @@ resource "digitalocean_record" "mail-1" {
 resource "digitalocean_record" "mail-2" {
   for_each = toset(local.domains)
 
-  domain = "${digitalocean_domain.domain[each.key].name}"
+  domain = digitalocean_domain.domain[each.key].name
   type   = "A"
   name   = "mail"
   value  = "66.111.4.148"
@@ -77,7 +77,7 @@ resource "digitalocean_record" "mail-2" {
 resource "digitalocean_record" "caa" {
   for_each = toset(local.domains)
 
-  domain = "${digitalocean_domain.domain[each.key].name}"
+  domain = digitalocean_domain.domain[each.key].name
   type   = "CAA"
   name   = "@"
   value  = "letsencrypt.org."
@@ -88,7 +88,7 @@ resource "digitalocean_record" "caa" {
 resource "digitalocean_record" "email-mx-1" {
   for_each = toset(local.domains)
 
-  domain   = "${digitalocean_domain.domain[each.key].name}"
+  domain   = digitalocean_domain.domain[each.key].name
   type     = "MX"
   name     = "@"
   value    = "in1-smtp.messagingengine.com."
@@ -98,7 +98,7 @@ resource "digitalocean_record" "email-mx-1" {
 resource "digitalocean_record" "email-mx-1-wildcard" {
   for_each = toset(local.domains)
 
-  domain   = "${digitalocean_domain.domain[each.key].name}"
+  domain   = digitalocean_domain.domain[each.key].name
   type     = "MX"
   name     = "*"
   value    = "in1-smtp.messagingengine.com."
@@ -112,7 +112,7 @@ resource "digitalocean_record" "email-mx-1-wildcard" {
 resource "digitalocean_record" "email-mx-1-mail" {
   for_each = toset(local.domains)
 
-  domain   = "${digitalocean_domain.domain[each.key].name}"
+  domain   = digitalocean_domain.domain[each.key].name
   type     = "MX"
   name     = "mail"
   value    = "in1-smtp.messagingengine.com."
@@ -122,7 +122,7 @@ resource "digitalocean_record" "email-mx-1-mail" {
 resource "digitalocean_record" "email-mx-2" {
   for_each = toset(local.domains)
 
-  domain   = "${digitalocean_domain.domain[each.key].name}"
+  domain   = digitalocean_domain.domain[each.key].name
   type     = "MX"
   name     = "@"
   value    = "in2-smtp.messagingengine.com."
@@ -132,7 +132,7 @@ resource "digitalocean_record" "email-mx-2" {
 resource "digitalocean_record" "email-mx-2-wildcard" {
   for_each = toset(local.domains)
 
-  domain   = "${digitalocean_domain.domain[each.key].name}"
+  domain   = digitalocean_domain.domain[each.key].name
   type     = "MX"
   name     = "*"
   value    = "in2-smtp.messagingengine.com."
@@ -146,7 +146,7 @@ resource "digitalocean_record" "email-mx-2-wildcard" {
 resource "digitalocean_record" "email-mx-2-mail" {
   for_each = toset(local.domains)
 
-  domain   = "${digitalocean_domain.domain[each.key].name}"
+  domain   = digitalocean_domain.domain[each.key].name
   type     = "MX"
   name     = "mail"
   value    = "in2-smtp.messagingengine.com."
@@ -156,7 +156,7 @@ resource "digitalocean_record" "email-mx-2-mail" {
 resource "digitalocean_record" "email-spf" {
   for_each = toset(local.domains)
 
-  domain = "${digitalocean_domain.domain[each.key].name}"
+  domain = digitalocean_domain.domain[each.key].name
   type   = "TXT"
   name   = "@"
   value  = "v=spf1 include:spf.messagingengine.com ?all"
@@ -165,7 +165,7 @@ resource "digitalocean_record" "email-spf" {
 resource "digitalocean_record" "email-dkim-1" {
   for_each = toset(local.domains)
 
-  domain = "${digitalocean_domain.domain[each.key].name}"
+  domain = digitalocean_domain.domain[each.key].name
   type   = "CNAME"
   name   = "fm1._domainkey"
   value  = "fm1.${digitalocean_domain.domain[each.key].name}.dkim.fmhosted.com."
@@ -174,7 +174,7 @@ resource "digitalocean_record" "email-dkim-1" {
 resource "digitalocean_record" "email-dkim-2" {
   for_each = toset(local.domains)
 
-  domain = "${digitalocean_domain.domain[each.key].name}"
+  domain = digitalocean_domain.domain[each.key].name
   type   = "CNAME"
   name   = "fm2._domainkey"
   value  = "fm2.${digitalocean_domain.domain[each.key].name}.dkim.fmhosted.com."
@@ -183,7 +183,7 @@ resource "digitalocean_record" "email-dkim-2" {
 resource "digitalocean_record" "email-dkim-3" {
   for_each = toset(local.domains)
 
-  domain = "${digitalocean_domain.domain[each.key].name}"
+  domain = digitalocean_domain.domain[each.key].name
   type   = "CNAME"
   name   = "fm3._domainkey"
   value  = "fm3.${digitalocean_domain.domain[each.key].name}.dkim.fmhosted.com."
@@ -192,7 +192,7 @@ resource "digitalocean_record" "email-dkim-3" {
 resource "digitalocean_record" "email-discovery-submission" {
   for_each = toset(local.domains)
 
-  domain   = "${digitalocean_domain.domain[each.key].name}"
+  domain   = digitalocean_domain.domain[each.key].name
   type     = "SRV"
   name     = "_submission._tcp.${digitalocean_domain.domain[each.key].name}"
   value    = "smtp.fastmail.com."
@@ -204,7 +204,7 @@ resource "digitalocean_record" "email-discovery-submission" {
 resource "digitalocean_record" "email-discovery-imaps" {
   for_each = toset(local.domains)
 
-  domain   = "${digitalocean_domain.domain[each.key].name}"
+  domain   = digitalocean_domain.domain[each.key].name
   type     = "SRV"
   name     = "_imaps._tcp"
   value    = "imap.fastmail.com."
@@ -216,7 +216,7 @@ resource "digitalocean_record" "email-discovery-imaps" {
 resource "digitalocean_record" "email-discovery-pop3s" {
   for_each = toset(local.domains)
 
-  domain   = "${digitalocean_domain.domain[each.key].name}"
+  domain   = digitalocean_domain.domain[each.key].name
   type     = "SRV"
   name     = "_pop3s._tcp"
   value    = "pop.fastmail.com."
@@ -228,7 +228,7 @@ resource "digitalocean_record" "email-discovery-pop3s" {
 resource "digitalocean_record" "email-discovery-carddavs" {
   for_each = toset(local.domains)
 
-  domain   = "${digitalocean_domain.domain[each.key].name}"
+  domain   = digitalocean_domain.domain[each.key].name
   type     = "SRV"
   name     = "_carddavs._tcp"
   value    = "carddav.fastmail.com."
@@ -240,7 +240,7 @@ resource "digitalocean_record" "email-discovery-carddavs" {
 resource "digitalocean_record" "email-discovery-caldavs" {
   for_each = toset(local.domains)
 
-  domain   = "${digitalocean_domain.domain[each.key].name}"
+  domain   = digitalocean_domain.domain[each.key].name
   type     = "SRV"
   name     = "_caldavs._tcp"
   value    = "caldav.fastmail.com."
@@ -252,7 +252,7 @@ resource "digitalocean_record" "email-discovery-caldavs" {
 resource "digitalocean_firewall" "jeanmertz" {
   name = "ssh-and-http"
 
-  droplet_ids = ["${digitalocean_droplet.jeanmertz.id}"]
+  droplet_ids = [digitalocean_droplet.jeanmertz.id]
 
   inbound_rule {
     protocol         = "tcp"
@@ -310,12 +310,12 @@ resource "digitalocean_firewall" "jeanmertz" {
 }
 
 resource "digitalocean_floating_ip" "jeanmertz" {
-  region = "${digitalocean_droplet.jeanmertz.region}"
+  region = digitalocean_droplet.jeanmertz.region
 }
 
 resource "digitalocean_floating_ip_assignment" "jeanmertz" {
-  ip_address = "${digitalocean_floating_ip.jeanmertz.ip_address}"
-  droplet_id = "${digitalocean_droplet.jeanmertz.id}"
+  ip_address = digitalocean_floating_ip.jeanmertz.ip_address
+  droplet_id = digitalocean_droplet.jeanmertz.id
 
   lifecycle {
     create_before_destroy = true
@@ -329,11 +329,11 @@ resource "digitalocean_droplet" "jeanmertz" {
   size        = "s-1vcpu-1gb"
   ipv6        = true
   resize_disk = false
-  ssh_keys    = ["${digitalocean_ssh_key.jeanmertz.fingerprint}"]
-  user_data   = "${data.ignition_config.jeanmertz.rendered}"
+  ssh_keys    = [digitalocean_ssh_key.jeanmertz.fingerprint]
+  user_data   = data.ignition_config.jeanmertz.rendered
   tags = [
-    "${digitalocean_tag.jeanmertz.id}",
-    "${digitalocean_tag.production.id}",
+    digitalocean_tag.jeanmertz.id,
+    digitalocean_tag.production.id,
   ]
 
   lifecycle {
