@@ -319,7 +319,7 @@ resource "digitalocean_floating_ip_assignment" "jeanmertz" {
 }
 
 resource "digitalocean_droplet" "jeanmertz" {
-  image       = "53649892" # CoreOS 2247.5.0 (stable)
+  image       = "coreos-stable" # CoreOS 2247.7.0 (stable)
   name        = "jeanmertz.com"
   region      = "ams3"
   size        = "s-1vcpu-1gb"
