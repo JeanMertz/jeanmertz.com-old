@@ -3,16 +3,14 @@ provider "ignition" {
 }
 
 data "ignition_config" "jeanmertz" {
-  directories = [
-    "${data.ignition_directory.www.id}",
-  ]
+  directories = [for d in data.ignition_directory.www : d.id]
 
   files = concat(
-    [for k in data.ignition_file.cert_keys : k.id],
-    [for c in data.ignition_file.cert_crts : c.id],
+    [for f in data.ignition_file.cert_keys : f.id],
+    [for f in data.ignition_file.cert_crts : f.id],
+    [for f in data.ignition_file.nginx : f.id],
     [
       data.ignition_file.profile_variables.id,
-      data.ignition_file.nginx_conf.id,
       data.ignition_file.sshd_config.id
     ],
   )
@@ -24,8 +22,10 @@ data "ignition_config" "jeanmertz" {
 }
 
 data "ignition_directory" "www" {
+  for_each = var.domains
+
   filesystem = "root"
-  path       = "/opt/www/jeanmertz.com/public"
+  path       = "/opt/www/${each.key}/public"
   mode       = 493 # 755
   uid        = 500
   gid        = 500
@@ -67,13 +67,15 @@ data "ignition_file" "cert_crts" {
   }
 }
 
-data "ignition_file" "nginx_conf" {
+data "ignition_file" "nginx" {
+  for_each = toset(concat(["nginx"], keys(var.domains)))
+
   filesystem = "root"
-  path       = "/opt/etc/nginx/nginx.conf"
+  path       = "/opt/etc/nginx/${each.key}.conf"
   mode       = 420 # 644
 
   content {
-    content = file("${path.cwd}/nginx.conf")
+    content = file("${path.cwd}/nginx/${each.key}.conf")
   }
 }
 
